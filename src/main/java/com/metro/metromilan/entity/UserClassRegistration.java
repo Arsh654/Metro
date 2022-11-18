@@ -1,13 +1,13 @@
 package com.metro.metromilan.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,7 +17,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserClassRegistration {
+@EqualsAndHashCode(callSuper = true)
+public class UserClassRegistration extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,9 +45,7 @@ public class UserClassRegistration {
          //Related Articles.
         * https://softwareengineering.stackexchange.com/questions/358913/is-storing-a-list-of-strings-in-single-database-field-a-bad-idea-why
         * */
-    //@ElementCollection
     @Column(name = "user_interest")
-    //private List <String> Interest;
     private String Interest;
 
     @Column(name = "user_age")
@@ -61,18 +60,31 @@ public class UserClassRegistration {
     @NotBlank(message = "Email-id must not be Empty")
     private String email_id;
 
+//    @Column(name = "user_ceatedAt")
+////    @CreatedDate
+//    @CreationTimestamp
+//    private OffsetDateTime UserTime;
+
     @Override
     public String toString() {
         return "UserClassRegistration{" +
                 "userId=" + userId +
                 ", name='" + name + '\'' +
-                ", Interest=" + Interest +
+                ", Interest='" + Interest + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +
                 ", email_id='" + email_id + '\'' +
                 '}';
     }
+
+//    public OffsetDateTime getUserTime() {
+//        return UserTime;
+//    }
+//
+//    public void setUserTime(OffsetDateTime userTime) {
+//        UserTime = userTime;
+//    }
 
     public String getInterest() {
         return Interest;
