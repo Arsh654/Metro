@@ -18,6 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = true)
+@Table(name = "user_registration")
 public class UserClassRegistration extends BaseEntity{
 
     @Id
