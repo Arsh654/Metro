@@ -15,6 +15,7 @@ import java.util.UUID;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class UserClassRegistration {
 
@@ -28,24 +29,25 @@ public class UserClassRegistration {
     private String name;
 
     /*
-    * Storing a List in a single DB is Not a good idea & Also Considered as a violation of normalization.
-    * that's why we have the new DB as "USER_CLASS_REGISTRATION_INTEREST" just for storing the interest of the users.
-    * and schema looks like we have a mapping of "ids" vs "interest"
-    *
-        USER_CLASS_REGISTRATION_ID  	    INTEREST
-            1	                             play
-            1	                             music
-            1	                             read
-            2	                             A
-            2	                             B
-            2                                C
+        * Storing a List in a single DB is Not a good idea & Also Considered as a violation of normalization.
+        * that's why we have the new DB as "USER_CLASS_REGISTRATION_INTEREST" just for storing the interest of the users.
+        * and schema looks like we have a mapping of "ids" vs "interest"
+        *
+            USER_CLASS_REGISTRATION_ID  	    INTEREST
+                1	                             play
+                1	                             music
+                1	                             read
+                2	                             A
+                2	                             B
+                2                                C
 
-     //Related Articles.
-    * https://softwareengineering.stackexchange.com/questions/358913/is-storing-a-list-of-strings-in-single-database-field-a-bad-idea-why
-    * */
-    @ElementCollection
+         //Related Articles.
+        * https://softwareengineering.stackexchange.com/questions/358913/is-storing-a-list-of-strings-in-single-database-field-a-bad-idea-why
+        * */
+    //@ElementCollection
     @Column(name = "user_interest")
-    private List <String> Interest;
+    //private List <String> Interest;
+    private String Interest;
 
     @Column(name = "user_age")
     private int age;
@@ -72,16 +74,12 @@ public class UserClassRegistration {
                 '}';
     }
 
-    public UserClassRegistration(UUID userId, String name, List<String> interest, int age, String gender, String mobileNumber, String email_id) {
-        this.userId = userId;
-        this.name = name;
-        Assert.notNull(interest, "Interest result items list should not be null");
-        //Interest = interest;
-        this.age = age;
-        this.gender = gender;
-        Assert.notNull(mobileNumber, "Mobile number must not be Empty");
-        //this.mobileNumber = mobileNumber;
-        this.email_id = email_id;
+    public String getInterest() {
+        return Interest;
+    }
+
+    public void setInterest(String interest) {
+        Interest = interest;
     }
 
     public UUID getUserId() {
@@ -100,13 +98,6 @@ public class UserClassRegistration {
         this.name = name;
     }
 
-    public List<String> getInterest() {
-        return Interest;
-    }
-
-    public void setInterest(List<String> interest) {
-        Interest = interest;
-    }
 
     public int getAge() {
         return age;
