@@ -1,12 +1,14 @@
 package com.metro.metromilan.entity;
 
 import lombok.*;
+import net.bytebuddy.implementation.bind.annotation.Default;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -47,18 +49,19 @@ public class UserClassRegistration extends BaseEntity{
         * https://softwareengineering.stackexchange.com/questions/358913/is-storing-a-list-of-strings-in-single-database-field-a-bad-idea-why
         * */
     @Column(name = "user_interest")
+    @NotNull(message = "Interest can't be Blank")
     private String Interest;
 
     @Column(name = "user_age")
-    private int age;
+    private int age=1000;
     @Column(name = "user_gender")
-    private String gender;
+    private String gender="In-valid";
 
     @Column(name = "user_mob_number", unique = true )
-    @NotBlank(message = "Mobile number must not be Empty")
+    @NotBlank(message = "Mobile number must be Unique")
     private String mobileNumber;
     @Column(name = "user_email_id", unique = true)
-    @NotBlank(message = "Email-id must not be Empty")
+    @NotBlank(message = "Email-id must be Unique")
     private String email_id;
 
 //    @Column(name = "user_ceatedAt")
