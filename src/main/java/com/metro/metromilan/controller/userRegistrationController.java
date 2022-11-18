@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@Table(name = "user_registration")
 public class userRegistrationController {
 
     private final IuserService iuserService;
