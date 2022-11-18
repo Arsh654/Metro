@@ -4,20 +4,24 @@ import com.metro.metromilan.entity.UserClassRegistration;
 import com.metro.metromilan.services.IuserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Table;
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@Table(name = "user_registration")
 public class userRegistrationController {
 
-    @Autowired
-    private IuserService iuserService;
+    private final IuserService iuserService;
 
-    private static Logger LOGGER = LoggerFactory.getLogger(userRegistrationController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(userRegistrationController.class);
+
+    public userRegistrationController(IuserService iuserService) {
+        this.iuserService = iuserService;
+    }
 
 
     @PostMapping("/users")
