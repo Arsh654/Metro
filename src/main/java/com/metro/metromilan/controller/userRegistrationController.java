@@ -2,12 +2,11 @@ package com.metro.metromilan.controller;
 
 import com.metro.metromilan.entity.UserClassRegistration;
 import com.metro.metromilan.services.IuserService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Table;
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
