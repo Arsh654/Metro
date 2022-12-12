@@ -1,16 +1,10 @@
 package com.metro.metromilan.entity;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import net.bytebuddy.implementation.bind.annotation.Default;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.util.Assert;
+import org.jetbrains.annotations.NotNull;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -49,7 +43,7 @@ public class UserClassRegistration extends BaseEntity{
         * https://softwareengineering.stackexchange.com/questions/358913/is-storing-a-list-of-strings-in-single-database-field-a-bad-idea-why
         * */
     @Column(name = "user_interest")
-    @NotNull(message = "Interest can't be Blank")
+    @NotNull
     private String Interest;
 
     @Column(name = "user_age")
