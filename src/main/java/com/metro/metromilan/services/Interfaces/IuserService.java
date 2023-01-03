@@ -1,4 +1,4 @@
-package com.metro.metromilan.services;
+package com.metro.metromilan.services.Interfaces;
 
 import com.metro.metromilan.entity.UserClassRegistration;
 

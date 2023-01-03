@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+//import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class UserClassRegistration extends BaseEntity{
     @Column(name="user_uuid", insertable = false, updatable = false, nullable = false, columnDefinition = "VARCHAR(255)")
     private UUID userId;
 
-    @NotBlank(message = "Please provide the User Name")
+    //@NotBlank(message = "Please provide the User Name")
     @Column(name = "user_name")
     private String name;
 
@@ -43,19 +44,25 @@ public class UserClassRegistration extends BaseEntity{
         * https://softwareengineering.stackexchange.com/questions/358913/is-storing-a-list-of-strings-in-single-database-field-a-bad-idea-why
         * */
     @Column(name = "user_interest")
-    @NotNull
-    private String Interest;
+    //@NotNull
+    private String interest;
 
     @Column(name = "user_age")
     private int age=1000;
     @Column(name = "user_gender")
     private String gender="In-valid";
+    @Column(name = "location")
+    //@NotNull
+    private String place;
+    //Store place in Capital letters from frontend side...as logic for Fetching of first time user details from DB
+    // have been configured in the capitalize form.
+    //see flow of "firstTimeController"..
 
-    @Column(name = "user_mob_number", unique = true )
-    @NotBlank(message = "Mobile number must be Unique")
+    @Column(name = "user_mob_number")
+    //@NotBlank(message = "Mobile number must be Unique")
     private String mobileNumber;
-    @Column(name = "user_email_id", unique = true)
-    @NotBlank(message = "Email-id must be Unique")
+    @Column(name = "user_email_id")
+    //@NotBlank(message = "Email-id must be Unique")
     private String email_id;
 
 //    @Column(name = "user_ceatedAt")
@@ -68,13 +75,15 @@ public class UserClassRegistration extends BaseEntity{
         return "UserClassRegistration{" +
                 "userId=" + userId +
                 ", name='" + name + '\'' +
-                ", Interest='" + Interest + '\'' +
+                ", Interest='" + interest + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
+                ", Place='" + place + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +
                 ", email_id='" + email_id + '\'' +
                 '}';
     }
+
 
 //    public OffsetDateTime getUserTime() {
 //        return UserTime;
@@ -84,13 +93,7 @@ public class UserClassRegistration extends BaseEntity{
 //        UserTime = userTime;
 //    }
 
-    public String getInterest() {
-        return Interest;
-    }
 
-    public void setInterest(String interest) {
-        Interest = interest;
-    }
 
     public UUID getUserId() {
         return userId;
@@ -108,6 +111,13 @@ public class UserClassRegistration extends BaseEntity{
         this.name = name;
     }
 
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
 
     public int getAge() {
         return age;
@@ -123,6 +133,14 @@ public class UserClassRegistration extends BaseEntity{
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public String getMobileNumber() {
