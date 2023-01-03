@@ -1,7 +1,8 @@
-package com.metro.metromilan.services;
+package com.metro.metromilan.services.Impl;
 
 import com.metro.metromilan.entity.UserClassRegistration;
 import com.metro.metromilan.repository.IUserRepository;
+import com.metro.metromilan.services.Interfaces.IuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,0 +1,10 @@
+Sample API Structure to parse user into DB.
+{
+    "name":"Umar",
+    "interest": "Badminton,Soccer,cricket",
+    "age" : 21,
+    "gender" : "male",
+    "place" : "Delhi",
+    "mobileNumber": "97272789729",
+    "email_id" : "bjkhbab@jknfaks.com"
+}
