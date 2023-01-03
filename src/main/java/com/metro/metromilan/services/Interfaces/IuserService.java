@@ -8,4 +8,6 @@ public interface IuserService {
     UserClassRegistration saveUser(UserClassRegistration userClassRegistration);
 
     List<UserClassRegistration> getAllUsersList();
+
+    UserClassRegistration findbyName(String name);
 }

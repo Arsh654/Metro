@@ -22,4 +22,9 @@ public class userServiceImpl implements IuserService {
     public List<UserClassRegistration> getAllUsersList() {
         return iUserRepository.findAll();
     }
+
+    @Override
+    public UserClassRegistration findbyName(String name) {
+        return iUserRepository.findByName(name);
+    }
 }

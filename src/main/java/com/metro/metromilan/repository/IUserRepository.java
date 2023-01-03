@@ -17,4 +17,5 @@ public interface IUserRepository extends JpaRepository<UserClassRegistration, UU
     @Query("SELECT u FROM UserClassRegistration u WHERE u.place=:p")
     List<UserClassRegistration> getUserClassRegistrationByPlace(@Param("p") String place);
 
+    UserClassRegistration findByName(String name);
 }
