@@ -43,7 +43,7 @@ public class firstTimeController {
         log.info("Inside the Controller of firstTimeController");
         //log.info("Hello There");
         place=place.toUpperCase();
-        //log.info(place.toUpperCase());
+        log.info(place);
         return ifirstTimeUserService.getNearbyDestination(place);
         //return new ResponseEntity<>(HttpStatus.OK);
     }
